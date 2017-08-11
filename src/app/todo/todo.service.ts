@@ -9,7 +9,8 @@ import 'rxjs/add/operator/toPromise';
 export class TodoService {
   // 定义你的假WebAPI地址，这个定义成什么都无所谓
   // 只要确保是无法访问的地址就好
-  private api_url = 'api/todos';
+  // private api_url = 'api/todos';
+  private api_url = 'http://localhost:3000/todos';
   private headers = new Headers({'Content-Type': 'application/json'});
 
   todos: Todo[] = [];
@@ -30,7 +31,8 @@ export class TodoService {
                // 在参数配置中我们配置了request的header。
       .post(this.api_url, JSON.stringify(todo), {headers: this.headers})
       .toPromise() // 返回的是一个Observable（可观察对象）,转为 Promise
-      .then(res => res.json().data as Todo)
+      // .then(res => res.json().data as Todo)
+      .then(res => res.json() as Todo)
       .catch(this.handleError);
   }
   // PUT 更新

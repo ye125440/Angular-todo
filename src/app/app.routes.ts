@@ -10,7 +10,7 @@ export const routes: Routes = [
   },
   {
     path: 'todo',
-    component: TodoComponent
+    redirectTo: 'todo'
   },
   {
     path: 'login',
