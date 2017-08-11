@@ -12,7 +12,7 @@ import 'rxjs/add/operator/distinctUntilChanged';
 export class TodoHeaderComponent implements OnInit {
   inputValue: string = '';
   @Input() placeholder: string = 'What needs to be done?';
-  @Input() delay: number = 300;
+  @Input() delay: number = 10;
 
   // detect the input value and output this to parent
   @Output() textChanges = new EventEmitter<string>();

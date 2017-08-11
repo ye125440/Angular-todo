@@ -17,6 +17,8 @@ export class TodoService {
   constructor(private http: Http) { }
   // POST 新增
   addTodo(desc: string): Promise<Todo> {
+    // 现在有一个问题 如果什么都不输(或者 < debounceTime) 会添加空记录
+    // if (desc === '') { return; }
     const todo = {
       id: UUID.UUID(),
       desc: desc,

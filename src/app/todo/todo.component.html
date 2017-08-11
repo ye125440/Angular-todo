@@ -1,4 +1,10 @@
 <section class="todoapp">
+  <app-todo-header
+  placeholder="What do you want"
+  (textChanges)="onTextChanges($event)"
+  (onEnterUp)="addTodo()">
+
+  </app-todo-header>
   <!--<header class="header">-->
     <!--<h1>Todos</h1>-->
     <!--<input class="new-todo" placeholder="What needs to be done?" autofocus=""-->

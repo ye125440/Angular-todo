@@ -19,6 +19,10 @@ export class TodoComponent implements OnInit {
     this.getTodos();
   }
 
+  onTextChanges(value) {
+    this.desc = value;
+  }
+
   addTodo() {
     // this.todos.push({id: '1', desc: this.desc, completed: false});
     // this.desc = '';
