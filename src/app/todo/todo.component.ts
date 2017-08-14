@@ -27,7 +27,7 @@ export class TodoComponent implements OnInit {
     // this.todos.push({id: '1', desc: this.desc, completed: false});
     // this.desc = '';
     this.todoService.addTodo(this.desc)
-      .then(todo => {
+        .then(todo => {
         this.todos = [...this.todos, todo];
         this.desc = '';
       });
@@ -36,7 +36,7 @@ export class TodoComponent implements OnInit {
   toggleTodo(todo: Todo) {
     const i = this.todos.indexOf(todo);
     this.todoService.toggleTodo(todo)
-      .then(t => {
+        .then(t => {
         this.todos = [
           ...this.todos.slice(0, i), t, ...this.todos.slice(i + 1)
         ]; // 改变第 i 个对象的 completed 属性后更新
@@ -46,7 +46,7 @@ export class TodoComponent implements OnInit {
   removeTodo(todo: Todo) {
     const i = this.todos.indexOf(todo);
     this.todoService.deleteTodoById(todo.id)
-      .then(() => {
+        .then(() => {
         this.todos = [
           ...this.todos.slice(0, i), ...this.todos.slice(i + 1)
         ];
@@ -55,6 +55,6 @@ export class TodoComponent implements OnInit {
 
   getTodos(): void {
     this.todoService.getTodos()
-      .then(todos => this.todos = [...todos]);
+        .then(todos => this.todos = [...todos]);
   }
 }

@@ -29,11 +29,11 @@ export class TodoService {
     return this.http // 构造一个POST类型的HTTP请求
                // 其访问的url是this.api_url，request的body是一个JSON（把todo对象转换成JSON）
                // 在参数配置中我们配置了request的header。
-      .post(this.api_url, JSON.stringify(todo), {headers: this.headers})
-      .toPromise() // 返回的是一个Observable（可观察对象）,转为 Promise
-      // .then(res => res.json().data as Todo)
-      .then(res => res.json() as Todo)
-      .catch(this.handleError);
+               .post(this.api_url, JSON.stringify(todo), {headers: this.headers})
+               .toPromise() // 返回的是一个Observable（可观察对象）,转为 Promise
+               // .then(res => res.json().data as Todo)
+               .then(res => res.json() as Todo)
+               .catch(this.handleError);
   }
   // PUT 更新
   toggleTodo(todo: Todo): Promise<Todo> {
@@ -41,28 +41,29 @@ export class TodoService {
     console.log(url);
     const updateTodo = Object.assign({}, todo, {completed: !todo.completed});
     return this.http
-      .put(url, JSON.stringify(updateTodo), {headers: this.headers})
-      .toPromise()
-      .then(() => updateTodo)
-      .catch(this.handleError);
+               .put(url, JSON.stringify(updateTodo), {headers: this.headers})
+               .toPromise()
+               .then(() => updateTodo)
+               .catch(this.handleError);
   }
 
   // DELETE 删除
   deleteTodoById(id: string): Promise<void> {
     const url = `${this.api_url}/${id}`;
     return this.http
-      .delete(url, {headers: this.headers})
-      .toPromise()
-      .then(() => null)
-      .catch(this.handleError);
+               .delete(url, {headers: this.headers})
+               .toPromise()
+               .then(() => null)
+               .catch(this.handleError);
   }
 
   // GET 拉取
   getTodos(): Promise<Todo[]> {
     return this.http.get(this.api_url)
-      .toPromise()
-      .then(res => res.json().data as Todo[])
-      .catch(this.handleError);
+               .toPromise()
+               // .then(res => res.json().data as Todo[])
+               .then(res => res.json() as Todo[])
+               .catch(this.handleError);
   }
 
   private handleError(error: any): Promise<void> {
